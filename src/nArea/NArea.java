@@ -1,17 +1,15 @@
 package nArea;
 
+import java.util.Stack;
+
 public class NArea {
     private No raiz;
+
+    public NArea() {}
 
     public No getRaiz() {
         return raiz;
     }
-
-    public void setRaiz(No raiz) {
-        this.raiz = raiz;
-    }
-
-    public NArea() {}
 
     public void Inserir(int info) {
         if(raiz == null) {
@@ -21,30 +19,54 @@ public class NArea {
             No aux = raiz, ant = raiz;
             while(aux!=null && aux.getTL()<No.N-1){
                 ant = aux;
-                aux = aux.getvLig(aux.buscarInfo(info));
+                aux = aux.getLig(aux.buscarPos(info));
             }
             if(aux==null){
-                ant.setvLig(ant.buscarInfo(info), new No(info));
+                ant.setLig(ant.buscarPos(info), new No(info));
             }
             else{
-                int pos = aux.buscarInfo(info);
+                int pos = aux.buscarPos(info);
                 aux.remanejar(pos);
-                aux.setvLig(pos, new No(info));
+                aux.setLig(pos, new No(info));
                 aux.setTL(aux.getTL()+1);
             }
         }
     }
 
-    public void in_ordem() {
+    public void in_ordem_recursivo() {
         inordem(this.raiz);
     }
     public void inordem(No raiz){
         int pos = -1;
         while(raiz!=null && pos<raiz.getTL()){
-            if(pos!=-1){
-                System.out.println(raiz.getvInfo(pos));
+            if(pos>-1){
+                System.out.println(raiz.getInfo(pos));
             }
-            inordem(raiz.getvLig(++pos));
+            inordem(raiz.getLig(++pos));
+        }
+    }
+    public void in_ordem_interativo(){
+        int pos;
+        No aux;
+        Stack<No> p = new Stack<>();
+        Stack<Integer> pi = new Stack<>();
+
+        p.push(raiz);
+        pi.push(-1);
+
+        while(!p.isEmpty()){
+            aux = p.pop();
+            pos = pi.pop();
+
+            while(aux!=null && pos<aux.getTL()){
+                pi.push(pos+1);
+                p.push(aux);
+                if(pos>-1){
+                    System.out.println(aux.getInfo(pos));
+                }
+                aux = aux.getLig(pos+1);
+                pos = -1;
+            }
         }
     }
 }

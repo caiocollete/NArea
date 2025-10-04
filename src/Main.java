@@ -10,7 +10,9 @@ public class Main {
         raiz.Inserir(50);
         raiz.Inserir(90);
         raiz.Inserir(80);
-        System.out.println("ftotal");
-        raiz.in_ordem();
+        raiz.Inserir(105);
+        raiz.Inserir(110);
+        //raiz.in_ordem_recursivo();
+        raiz.in_ordem_interativo();
     }
 }

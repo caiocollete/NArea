@@ -13,11 +13,11 @@ public class No {
         vInfo[TL++] = info;
     }
 
-    public int getvInfo(int pos) {
+    public int getInfo(int pos) {
         return vInfo[pos];
     }
 
-    public void setvInfo(int pos, int vInfo) {
+    public void setInfo(int pos, int vInfo) {
         this.vInfo[pos] = vInfo;
     }
 
@@ -29,15 +29,15 @@ public class No {
         this.TL = TL;
     }
 
-    public No getvLig(int pos) {
+    public No getLig(int pos) {
         return vLig[pos];
     }
 
-    public void setvLig(int pos, No vLig) {
+    public void setLig(int pos, No vLig) {
         this.vLig[pos] = vLig;
     }
 
-    public int buscarInfo(int info) {
+    public int buscarPos(int info) {
         int pos = 0;
         while(pos<TL && vInfo[pos]<info){
             pos++;
