@@ -35,6 +35,7 @@ public class NArea {
 
     public void in_ordem_recursivo() {
         inordem(this.raiz);
+        in_ordem_recursivo_chico(this.raiz);
     }
     public void inordem(No raiz){
         int pos = -1;
@@ -43,6 +44,16 @@ public class NArea {
                 System.out.println(raiz.getInfo(pos));
             }
             inordem(raiz.getLig(++pos));
+        }
+    }
+
+    public void in_ordem_recursivo_chico(No raiz){
+        if(raiz!=null){
+            for(int i=0; i<raiz.getTL(); i++){
+                in_ordem_recursivo_chico(raiz.getLig(i));
+                System.out.println(raiz.getInfo(i));
+            }
+            in_ordem_recursivo_chico(raiz.getLig(raiz.getTL()-1));
         }
     }
     public void in_ordem_interativo(){
