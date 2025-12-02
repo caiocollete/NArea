@@ -12,7 +12,6 @@ public class Main {
         raiz.Inserir(80);
         raiz.Inserir(105);
         raiz.Inserir(110);
-        //raiz.in_ordem_recursivo();
         raiz.in_ordem_interativo();
     }
 }

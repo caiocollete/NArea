@@ -27,35 +27,12 @@ public class NArea {
             else{
                 int pos = aux.buscarPos(info);
                 aux.remanejar(pos);
-                aux.setLig(pos, new No(info));
+                aux.setInfo(pos, info);
                 aux.setTL(aux.getTL()+1);
             }
         }
     }
 
-    public void in_ordem_recursivo() {
-        inordem(this.raiz);
-        in_ordem_recursivo_chico(this.raiz);
-    }
-    public void inordem(No raiz){
-        int pos = -1;
-        while(raiz!=null && pos<raiz.getTL()){
-            if(pos>-1){
-                System.out.println(raiz.getInfo(pos));
-            }
-            inordem(raiz.getLig(++pos));
-        }
-    }
-
-    public void in_ordem_recursivo_chico(No raiz){
-        if(raiz!=null){
-            for(int i=0; i<raiz.getTL(); i++){
-                in_ordem_recursivo_chico(raiz.getLig(i));
-                System.out.println(raiz.getInfo(i));
-            }
-            in_ordem_recursivo_chico(raiz.getLig(raiz.getTL()-1));
-        }
-    }
     public void in_ordem_interativo(){
         int pos;
         No aux;
